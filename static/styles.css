@@ -1,0 +1,304 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th {
+    padding: 10px;
+    text-align: center; /* Center align headers */
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    padding: 10px;
+    text-align: left; /* Left align table data */
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td input {
+    text-align: right; /* Right align text within input fields */
+    width: 50%; /* Reduce input field width to about half */
+    margin: 0 auto; /* Center input field within the table cell */
+    display: block; /* Ensure margin auto works */
+}
+
+.question {
+    margin-bottom: 15px;
+}
+
+h2, h3 {
+    margin-top: 20px;
+}
+
+/* Add styles specific to the results table */
+.results-table th, .results-table td {
+    text-align: center; /* Center align both headers and cells */
+}
+
+.results-table th {
+    background-color: #f2f2f2;
+}
+
+/* Style for gauge charts */
+.gauges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gauge {
+    flex: 1 1 45%;
+    min-width: 200px;
+    max-width: 300px;
+    margin: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1, h2, h3, p {
+    page-break-after: avoid;
+}
+
+/* Print styles */
+@media print {
+    body {
+        width: 21cm;
+        height: 29.7cm;
+        margin: 0 auto;
+    }
+
+    .page {
+        page-break-after: always;
+        padding: 1cm;
+        box-sizing: border-box;
+    }
+
+    .chart, .gauges-section, .financial-results {
+        page-break-inside: avoid;
+    }
+}
+
+/* Page specific styles */
+.page {
+    width: 210mm;
+    height: 297mm;
+    margin: 20mm auto;
+    padding: 20mm;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: white;
+    page-break-after: always;
+    position: relative;
+}
+.message {
+    width: 100%;
+    text-align: left;
+}
+.chart {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+.legend {
+    margin-top: 20px;
+    text-align: center;
+}
+.legend div {
+    display: inline-block;
+    margin-right: 10px;
+}
+.legend div span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+.low {
+    background-color: #B22222;
+}
+.medium {
+    background-color: #FF8000;
+}
+.high {
+    background-color: #4ACD3F;
+}
+.gauges-section {
+    margin-top: 30px;
+}
+.financial-results {
+    margin-top: 40px;
+}
+.business-valuation {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    background-color: #ecf0f1;
+    margin-bottom: 30px;
+}
+.page-break {
+    page-break-before: always;
+}
+.footer {
+    position: absolute;
+    bottom: 20mm;
+    left: 20mm; /* Align to the left */
+    width: 50mm;
+}
+.title-large {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center; /* Ensure title is centered */
+}
+.subtitle-large {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center; /* Ensure subtitle is centered */
+}
+.insights-list {
+    margin-top: 20px;
+    text-align: left; /* Align list to the left */
+    display: inline-block;
+}
+.center-text {
+    text-align: center;
+}
+.contents-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.contents-list {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    font-size: 1.2em;
+}
+.contents-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.results-text, .results-text h1, .results-text h2, .results-text h3, .results-text p, .results-text ul, .results-text li, .results-text table, .results-text th, .results-text td, .results-text .message, .results-text .chart, .results-text .legend, .results-text .gauges-section, .results-text .financial-results, .results-text .business-valuation, .results-text .center-text, .results-text .contents-title, .results-text .contents-list, .results-text .contents-item {
+    color: navy; /* Set text color to navy */
+}
+.chart {
+    margin-bottom: 20px; /* Add some space between the chart and legend */
+    text-align: center; /* Center the chart */
+}
+
+.legend-and-explanation {
+    text-align: left; /* Align the legend and explanation text to the left */
+    margin-top: 20px; /* Add some space above the legend */
+}
+
+.legend div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.legend span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.low {
+    background-color: #B22222;
+}
+
+.medium {
+    background-color: #FF8000;
+}
+
+.high {
+    background-color: #4ACD3F;
+}
+.explanation-box {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    background-color: #ecf0f1;
+    margin-top: 20px;
+}

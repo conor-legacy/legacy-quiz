@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Health Check</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form action="{{ url_for('business_health_check') }}" method="POST">
+            <h1>Business Health Assessment</h1>
+            {% for section_index, section in enumerate(sections) %}
+                <h2>{{ section.name }}</h2>
+                {% for question_index, question in enumerate(section.questions) %}
+                    <div class="question">
+                        <p>{{ question.text }}</p>
+                        {% for option in question.options %}
+                            <label>
+                                <input type="radio" name="section{{ section_index }}_question{{ question_index }}" value="{{ option.text }}" required>
+                                {{ option.text }}
+                            </label><br>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</body>
+</html>

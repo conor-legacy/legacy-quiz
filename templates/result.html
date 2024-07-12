@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- New Title Page -->
+    <div class="page results-text">
+        <h1 class="title-large">Business Health and Valuation Report for<br>{{ general_info['company_name'] }}</h1>
+        <p>Thank you {{ general_info['name'] }} for completing the Legacy Buyouts Business Health and Valuation Assessment.</p>
+        <p>A full report has been emailed to {{ general_info['email'] }}</p>
+        <p>Did you know:</p>
+        <p class="subtitle-large center-text">80% of small/medium businesses fail to sell. Prepare your company for sale, no matter what stage of your career you are in.</p>
+        <p>This report will help provide useful insights into:</p>
+        <ul class="insights-list">
+            <li>Assess the current health of your business</li>
+            <li>Identify areas for improvement</li>
+            <li>Get an approximate valuation for your business</li>
+            <li>Learn how you can increase the value of your business</li>
+        </ul>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+
+    <!-- Contents Page -->
+    <div class="page page-break results-text">
+        <h1 class="contents-title">Table of Contents</h1>
+        <ul class="contents-list">
+            <li class="contents-item">
+                <span>Business Health and Valuation Snapshot</span>
+                <span>3</span>
+            </li>
+            <li class="contents-item">
+                <span>Business Health Section Breakdown</span>
+                <span>4</span>
+            </li>
+            <li class="contents-item">
+                <span>How your Valuation is Calculated</span>
+                <span>9</span>
+            </li>
+            <li class="contents-item">
+                <span>Financial Ratios</span>
+                <span>10</span>
+            </li>
+        </ul>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+
+    <div class="page page-break results-text">
+        <div class="message">
+            <h1 class="title-large">Business Health and Valuation Snapshot</h1>
+            <p>We appreciate your interest in growing and selling your business. A snapshot of your results are shown below. A more detailed report awaits you further on, which will help you identify areas of improvement to accelerate the value of your business.</p>
+        </div>
+        <div class="business-valuation">
+            Business Valuation: €{{ business_valuation }}
+        </div>
+        <div class="chart">
+            <img src="data:image/png;base64,{{ chart_url }}" alt="Section Scores Donut Chart">
+        </div>
+        <div class="legend">
+            <div><span class="low"></span>Low [0-29]</div>
+            <div><span class="medium"></span>Medium [30-79]</div>
+            <div><span class="high"></span>High [80-100]</div>
+        </div>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+
+    <div class="page page-break results-text">
+        <h1 class="title-large">Business Health Section Breakdown</h1>
+        <p class="subtitle-large center-text">Exit Readiness</p>
+        <div class="gauges-section">
+            <div class="explanation-box">
+                <p>This section measures how prepared your business is for a potential sale or transition. It evaluates factors such as the ability to operate without the owner, succession planning, and financial documentation readiness.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p>Your Exit Readiness score is:</p>
+                </div>
+                <div class="gauge">{{ gauges[0] | safe }}</div>
+            </div>
+            <div class="message-box">
+                <p>{{ messages[0] }}</p>
+            </div>
+        </div>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+    
+    <div class="page page-break results-text">
+        <p class="subtitle-large center-text">Fundamentals</p>
+        <div class="gauges-section">
+            <div class="explanation-box">
+                <p>This section assesses the core aspects of your business operations, including financial management, customer concentration, and revenue predictability. It ensures the business is on solid ground.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p>Your Fundamentals score is:</p>
+                </div>
+                <div class="gauge">{{ gauges[1] | safe }}</div>
+            </div>
+            <div class="message-box">
+                <p>{{ messages[1] }}</p>
+            </div>
+        </div>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+    
+    <div class="page page-break results-text">
+        <p class="subtitle-large center-text">Operations</p>
+        <div class="gauges-section">
+            <div class="explanation-box">
+                <p>This section subsection evaluates the efficiency and effectiveness of your business operations. It looks at processes, supply chain management, and quality control to ensure smooth day-to-day functioning.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p>Your Operations score is:</p>
+                </div>
+                <div class="gauge">{{ gauges[2] | safe }}</div>
+            </div>
+            <div class="message-box">
+                <p>{{ messages[2] }}</p>
+            </div>
+        </div>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+    
+    <div class="page page-break results-text">
+        <p class="subtitle-large center-text">Sales and Marketing</p>
+        <div class="gauges-section">
+            <div class="explanation-box">
+                <p>This section examines your business's ability to attract and retain customers. It focuses on marketing strategies, sales processes, and customer engagement to drive business growth.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p>Your Sales and Marketing score is:</p>
+                </div>
+                <div class="gauge">{{ gauges[3] | safe }}</div>
+            </div>
+            <div class="message-box">
+                <p>{{ messages[3] }}</p>
+            </div>
+        </div>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+    
+    <div class="page page-break results-text">
+        <p class="subtitle-large center-text">Growth</p>
+        <div class="gauges-section">
+            <div class="explanation-box">
+                <p>This section evaluates your business's potential for future expansion. It looks at market opportunities, scalability, and innovation to ensure long-term success and competitiveness.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p>Your Growth score is:</p>
+                </div>
+                <div class="gauge">{{ gauges[4] | safe }}</div>
+            </div>
+            <div class="message-box">
+                <p>{{ messages[4] }}</p>
+            </div>
+        </div>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+
+    <div class="page page-break results-text">
+        <div class="financial-results">
+            <h1 class="title-large">Financial Ratios</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ratio</th>
+                        <th>2021</th>
+                        <th>2022</th>
+                        <th>2023</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ratio, data in financial_ratios['2021'].items() %}
+                        <tr>
+                            <td>{{ ratio }}</td>
+                            <td>{{ financial_ratios['2021'][ratio] }}</td>
+                            <td>{{ financial_ratios['2022'][ratio] }}</td>
+                            <td>{{ financial_ratios['2023'][ratio] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+
+    <!-- New page for the graph -->
+    <div class="page page-break results-text">
+        <h1 class="title-large">How Multiples are Assigned</h1>
+        <div class="chart">
+            <img src="data:image/png;base64,{{ bar_chart_url }}" alt="Bar Chart">
+        </div>
+        <img src="{{ url_for('static', filename='legacy-logo.png') }}" alt="Legacy Buyouts Logo" class="footer">
+    </div>
+</body>
+</html>

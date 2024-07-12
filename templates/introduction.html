@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Introduction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .disclaimer {
+            font-size: 0.8em;
+            color: #555;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Business Health and Valuation Assessment</h1>
+        <p>Thank you for participating in our Business Health and Valuation Assessment. This quiz is designed to help you understand the current state of your business and identify areas for improvement.</p>
+        <p>During the quiz, you will be asked a series of questions about different aspects of your business. These questions are divided into sections to make it easier for you to provide the necessary information.</p>
+        <p>The sections are as follows:</p>
+        <ul>
+            <li><strong>General Information:</strong> Share some details about yourself and the industry your company operates in.</li>
+            <li><strong>Business Health Assessment:</strong> Evaluate the health of your business in areas such as Exit Readiness, Fundamentals, Operations, Sales and Marketing, and Growth.</li>
+            <li><strong>Owners' Mindset:</strong> Reflect on your personal goals and mindset as a business owner, which can impact your business's future direction and success.</li>
+            <li><strong>Financial Valuation (Optional):</strong> Provide additional financial information to receive an approximate valuation of your business.</li>
+        </ul>
+        <p>At the end of the quiz, you will receive a comprehensive report based on your responses. If you choose to provide financial information, you will also receive a business valuation.</p>
+        <p class="disclaimer"><strong>Disclaimer:</strong> The financial valuation provided is an approximation and should not be treated as the definitive value of your business. This assessment is for informational purposes only, and we are not legally liable for any decisions made based on this valuation.</p>
+        <a href="{{ url_for('general_info') }}" class="btn">Next</a>
+    </div>
+</body>
+</html>
+

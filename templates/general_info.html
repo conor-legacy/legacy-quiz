@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>General Information</h1>
+        <form action="{{ url_for('general_info') }}" method="POST">
+            {% for question in section.questions %}
+                <div class="question">
+                    <p>{{ question.question }}</p>
+                    {% if question.type == "text" or question.type == "email" or question.type == "number" %}
+                        <input type="{{ question.type }}" name="{{ question.name }}" required>
+                    {% elif question.type == "select" %}
+                        <select name="{{ question.name }}" required onchange="showSuboptions(this)">
+                            <option value="">Select...</option>
+                            {% for option in question.options %}
+                                <option value="{{ option.text }}">{{ option.text }}</option>
+                            {% endfor %}
+                        </select>
+                        {% for option in question.options %}
+                            <div id="{{ option.text | replace(' ', '_') }}" class="suboptions" style="display: none;">
+                                <select name="{{ option.text | replace(' ', '_') }}_suboption">
+                                    <option value="">Select Sub-Option...</option>
+                                    {% for suboption in option.suboptions %}
+                                        <option value="{{ suboption }}">{{ suboption }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        {% endfor %}
+                    {% elif question.type == "radio" %}
+                        {% for option in question.options %}
+                            <label>
+                                <input type="radio" name="{{ question.name }}" value="{{ option.value }}" required>
+                                {{ option.text }}
+                            </label><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Next</button>
+        </form>
+    </div>
+    <script>
+        function showSuboptions(select) {
+            var suboptions = document.getElementsByClassName('suboptions');
+            for (var i = 0; i < suboptions.length; i++) {
+                suboptions[i].style.display = 'none';
+            }
+            if (select.value) {
+                var id = select.value.replace(/ /g, '_');
+                document.getElementById(id).style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
+

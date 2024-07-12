@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owners' Mindset</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Owners' Mindset</h1>
+        <form action="{{ url_for('owners_mindset') }}" method="POST">
+            {% for question in section.questions %}
+                <div class="question">
+                    <p>{{ question.text }}</p>
+                    {% if question.type == "text" %}
+                        <input type="text" name="{{ question.name }}" required>
+                    {% elif question.type == "radio" %}
+                        {% for option in question.options %}
+                            <label>
+                                <input type="radio" name="{{ question.name }}" value="{{ option.value }}" required>
+                                {{ option.text }}
+                            </label><br>
+                        {% endfor %}
+                    {% elif question.type == "checkbox" %}
+                        {% for option in question.options %}
+                            <label>
+                                <input type="checkbox" name="{{ question.name }}" value="{{ option.value }}">
+                                {{ option.text }}
+                            </label><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</body>
+</html>

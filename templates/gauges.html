@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Health Gauges</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .gauge {
+            margin-bottom: 20px;
+        }
+        .gauge-message {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Business Health Gauges</h1>
+        {% for gauge, message in zip(gauges, messages) %}
+            <div class="gauge">
+                {{ gauge | safe }}
+                <div class="gauge-message">{{ message }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

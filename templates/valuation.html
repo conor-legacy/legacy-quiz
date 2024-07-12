@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valuation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function handleFinancialQuestionsSelection() {
+            const selection = document.querySelector('input[name="financial_questions"]:checked').value;
+            const financialQuestionsSection = document.getElementById('financial-questions-section');
+            const submitMessage = document.getElementById('submit-message');
+            if (selection === 'no') {
+                financialQuestionsSection.querySelectorAll('input').forEach(input => input.required = false);
+                submitMessage.style.display = 'block';
+            } else {
+                financialQuestionsSection.querySelectorAll('input').forEach(input => input.required = true);
+                submitMessage.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Business Valuation</h1>
+        <form action="{{ url_for('valuation') }}" method="POST">
+            <div class="question">
+                <p>Would you like to provide your financial details below to receive an approximate valuation?</p>
+                <label>
+                    <input type="radio" name="financial_questions" value="yes" onchange="handleFinancialQuestionsSelection()" required>
+                    Yes
+                </label>
+                <label>
+                    <input type="radio" name="financial_questions" value="no" onchange="handleFinancialQuestionsSelection()" required>
+                    No
+                </label>
+            </div>
+
+            <div id="submit-message" style="display: none;">
+                <p>Press Submit</p>
+            </div>
+
+            <div id="financial-questions-section">
+                <h2>Financial Details</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Financial Metric</th>
+                            <th>2021</th>
+                            <th>2022</th>
+                            <th>2023</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for section in sections %}
+                            {% for question in section.questions %}
+                                <tr>
+                                    <td>{{ question.text }}</td>
+                                    {% for field in question.fields %}
+                                        <td>
+                                            <input type="text" name="financial_{{ question.text | lower | replace(' ', '_') }}_{{ field }}">
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        // Ensure the right sections are shown based on previous selection
+        document.addEventListener('DOMContentLoaded', (event) => {
+            handleFinancialQuestionsSelection();
+        });
+    </script>
+</body>
+</html>
